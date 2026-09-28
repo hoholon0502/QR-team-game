@@ -37,7 +37,8 @@ export default function Home() {
         팀원들과 함께 미션을 해결하세요!
       </p>
 
-      <button
+      <a
+        href="/game"
         style={{
           border: "none",
           borderRadius: "15px",
@@ -45,10 +46,13 @@ export default function Home() {
           fontSize: "18px",
           fontWeight: "bold",
           cursor: "pointer",
+          textDecoration: "none",
+          color: "inherit",
+          display: "inline-block",
         }}
       >
         GAME START
-      </button>
+      </a>
     </main>
   );
 }
