@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 export default function GamePage() {
+  const [userName, setUserName] = useState("");
   const [teamName, setTeamName] = useState("");
   return (
     <main
@@ -33,13 +34,13 @@ export default function GamePage() {
           width: "280px",
         }}
       >
-        <p style={{ fontWeight: "bold" }}>TEAM NAME</p>
+        <p style={{ fontWeight: "bold" }}>YOUR NAME</p>
 
         <input
           type="text"
-          placeholder="팀 이름을 입력하세요"
-          value={teamName}
-          onChange={(e) => setTeamName(e.target.value)}
+          placeholder="이름을 입력하세요"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
           style={{
             width: "90%",
             padding: "12px",
@@ -48,16 +49,41 @@ export default function GamePage() {
             border: "1px solid #ccc",
           }}
         />
+<p style={{ fontWeight: "bold", marginTop: "20px" }}>YOUR TEAM</p>
 
+<select
+  value={teamName}
+  onChange={(e) => setTeamName(e.target.value)}
+  style={{
+    width: "100%",
+    padding: "12px",
+    fontSize: "16px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+    backgroundColor: "white",
+  }}
+>
+  <option value="">팀을 선택하세요</option>
+  <option value="1조">1조</option>
+  <option value="2조">2조</option>
+  <option value="3조">3조</option>
+</select>
         <button
-          onClick={() => {
-            if (teamName.trim() === "") {
-            alert("팀 이름을 입력해주세요!");
-            return;
-           }
-          localStorage.setItem("teamName", teamName);
-          window.location.href = "/play";
-          }}
+onClick={() => {
+  if (userName.trim() === "") {
+    alert("이름을 입력해주세요!");
+    return;
+  }
+
+  if (teamName === "") {
+    alert("팀을 선택해주세요!");
+    return;
+  }
+
+  localStorage.setItem("userName", userName);
+  localStorage.setItem("teamName", teamName);
+  window.location.href = "/play";
+}}
           style={{
             marginTop: "15px",
             padding: "12px 25px",
