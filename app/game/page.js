@@ -1,4 +1,7 @@
+"use client";
+import { useState } from "react";
 export default function GamePage() {
+  const [teamName, setTeamName] = useState("");
   return (
     <main
       style={{
@@ -35,6 +38,8 @@ export default function GamePage() {
         <input
           type="text"
           placeholder="팀 이름을 입력하세요"
+          value={teamName}
+          onChange={(e) => setTeamName(e.target.value)}
           style={{
             width: "90%",
             padding: "12px",
@@ -45,6 +50,15 @@ export default function GamePage() {
         />
 
         <button
+          onClick={() => {
+            if (teamName.trim() === "") {
+            alert("팀 이름을 입력해주세요!");
+            return;
+           }
+
+          localStorage.setItem("teamName", teamName);
+          window.location.href = "/game";
+          }}
           style={{
             marginTop: "15px",
             padding: "12px 25px",
