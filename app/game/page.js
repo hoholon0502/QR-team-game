@@ -55,9 +55,8 @@ export default function GamePage() {
             alert("팀 이름을 입력해주세요!");
             return;
            }
-          alert("입력된 팀 이름: " + teamName);
           localStorage.setItem("teamName", teamName);
-          window.location.href = "/game";
+          window.location.href = "/play";
           }}
           style={{
             marginTop: "15px",
